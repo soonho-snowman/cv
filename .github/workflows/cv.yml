@@ -27,6 +27,7 @@ jobs:
         with:
           root_file: cv.tex
           latexmk_use_xelatex: true
+          texlive_version: 2020
 
       - name: Prepare site
         run: |
