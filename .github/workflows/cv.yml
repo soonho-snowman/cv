@@ -28,6 +28,13 @@ jobs:
           root_file: cv.tex
           latexmk_use_xelatex: true
           texlive_version: 2020
+          # Let XeLaTeX find TeX Live's own fonts (Roboto, Font Awesome) by name, as Overleaf does
+          pre_compile: |
+            mkdir -p "$HOME/.fonts"
+            ln -sf "$(kpsewhich -var-value TEXMFDIST)/fonts/opentype" "$HOME/.fonts/texlive-opentype"
+            ln -sf "$(kpsewhich -var-value TEXMFDIST)/fonts/truetype" "$HOME/.fonts/texlive-truetype"
+            fc-cache -f > /dev/null
+            fc-list | grep -i -c roboto || true
 
       - name: Prepare site
         run: |
