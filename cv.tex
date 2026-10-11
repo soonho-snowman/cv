@@ -1,0 +1,88 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Cies Resume/CV
+% LaTeX Template
+% Version 1.1 (20/7/14)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% Original author:
+% Cies Breijs (cies@kde.nl)
+% https://github.com/cies/resume with extensive modifications by:
+% Vel (vel@latextemplates.com)
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[10pt,letter]{article} % Font size (10-12pt) and paper size (a4paper, letterpaper, legalpaper, etc)
+
+
+\include{structure} % Include structure.tex which contains packages and document layout definitions
+
+\hyphenation{Some-long-word} % Specify custom hyphenation points in words with dashes where you would like hyphenation to occur, or alternatively, don't put any dashes in a word to stop hyphenation altogether
+
+\begin{document} 
+
+%----------------------------------------------------------------------------------------
+%	NAME AND CONTACT INFORMATION
+%----------------------------------------------------------------------------------------
+
+\maintitle{\Huge Soonho Kwon}\\{\href{mailto:soonho@gatech.edu}{soonho@gatech.edu}\bull\href{https://kwonsoonho.com/}{kwonsoonho.com}\bull\href{https://scholar.google.com/citations?user=R15_L1UAAAAJ&hl=en&oi=ao}{Google Scholar}}
+
+
+\roottitle{\Large Research Overview}
+\input{Content/Research Profile}
+\vspace{0.25em}
+
+\roottitle{\Large Education}
+\input{Content/Education}
+\vspace{0.25em}
+
+\roottitle{\Large Refereed Academic Publications}
+\input{Content/Publications}
+\vspace{0.25em}
+
+\roottitle{\Large Invited Talks \& Panels} 
+\input{Content/Invited Talks}
+\vspace{0.25em}
+
+\roottitle{\Large Awards, Scholarships \& Fellowships}
+\input{Content/Awards}
+\vspace{0.25em}
+
+\roottitle{\Large Academic Services} 
+\input{Content/Academic Service}
+\vspace{0.25em}
+
+\roottitle{\Large Media Coverage} 
+\input{Content/Media Coverage}
+\vspace{0.25em}
+
+\roottitle{\Large Teaching Experiences} 
+\input{Content/Teaching Experiences}
+\vspace{0.25em}
+
+\roottitle{\Large Professional Experiences} 
+\input{Content/Professional Experiences}
+\vspace{0.25em}
+
+\roottitle{\Large Artworks} 
+\input{Content/Artwork}
+\vspace{0.25em}
+
+\roottitle{\Large Other} 
+\input{Content/Other}
+\vspace{0.25em}
+
+\roottitle{\Large References} % Top level section
+\input{Content/References}
+
+
+
+\end{document}
