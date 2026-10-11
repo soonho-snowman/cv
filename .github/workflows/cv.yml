@@ -23,24 +23,23 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      # The CV loads fontenc T1 after Roboto; switch body text to XeLaTeX's TU encoding
+      # so Roboto is used as on Overleaf. cv.tex itself is not changed.
+      - name: Wrap cv.tex for the build
+        run: |
+          printf '%s\n' '\AtBeginDocument{\renewcommand{\encodingdefault}{TU}\fontencoding{TU}\selectfont}' '\input{cv}' > ci-cv.tex
+
       - uses: xu-cheng/latex-action@v3
         with:
-          root_file: cv.tex
+          root_file: ci-cv.tex
           latexmk_use_xelatex: true
           texlive_version: 2020
-          # Let XeLaTeX find TeX Live's own fonts (Roboto, Font Awesome) by name, as Overleaf does
-          pre_compile: |
-            mkdir -p "$HOME/.fonts"
-            ln -sf "$(kpsewhich -var-value TEXMFDIST)/fonts/opentype" "$HOME/.fonts/texlive-opentype"
-            ln -sf "$(kpsewhich -var-value TEXMFDIST)/fonts/truetype" "$HOME/.fonts/texlive-truetype"
-            fc-cache -f > /dev/null
-            fc-list | grep -i -c roboto || true
 
       - name: Prepare site
         run: |
           mkdir -p _site
-          cp cv.pdf _site/cv.pdf
-          cp cv.pdf _site/Soonho_Kwon_CV.pdf
+          cp ci-cv.pdf _site/cv.pdf
+          cp ci-cv.pdf _site/Soonho_Kwon_CV.pdf
           echo '<!doctype html><meta charset="utf-8"><title>Soonho Kwon - CV</title><meta http-equiv="refresh" content="0; url=cv.pdf"><a href="cv.pdf">CV (PDF)</a>' > _site/index.html
 
       - uses: actions/upload-pages-artifact@v3
